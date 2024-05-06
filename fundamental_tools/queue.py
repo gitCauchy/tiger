@@ -15,7 +15,9 @@ class Queue(object):
         self.queue.append(data)
 
     def delete(self):
-        self.queue.remove()
+        item = self.queue[-1]
+        del (self.queue[-1])
+        return item
 
     def clear(self):
         self.queue.clear()

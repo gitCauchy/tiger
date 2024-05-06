@@ -9,7 +9,7 @@ class Stack(object):
     def pop(self):
         """ item pop from top"""
         if self.stack:
-            return self.stack.pop()
+            return self.stack.pop(0)
         else:
             raise IndexError("stack is null")
 
@@ -17,7 +17,7 @@ class Stack(object):
         self.stack.append(data)
 
     def is_empty(self):
-        return bool(self.stack)
+        return len(self.stack) == 0
 
     def size(self):
         return len(self.stack)

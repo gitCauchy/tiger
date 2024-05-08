@@ -39,7 +39,7 @@ class Operator(object):
         """
         check whether it is a valid operator
         :param : op
-        :return: boolean result
+        :return: boolean result.py
         """
         if op in self.operator:
             return True

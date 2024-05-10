@@ -1,19 +1,18 @@
 from check.check import Check
 from command.command import Command
 from core.result import Result
-from fundamental_tools.function import fac
+from fundamental_tools.taylor_polynomial import TaylorPolynomial
 
 
 class Sine(Command, Check, Result):
     def result(self, *args):
-        sum = 0
         x = args[0]
         if len(args) == 1:
             precision = 10
         else:
             precision = args[1]
-        for i in range(precision):
-            sum += (self.power_x(x, i) * self.derivative_0(i)) / fac(i)
+        taylor = TaylorPolynomial()
+        sum = taylor.result(x, precision, self.derivative_0)
         return sum
 
     def man(self):
@@ -23,7 +22,12 @@ class Sine(Command, Check, Result):
         print("example : sin(1,10)")
 
     def check(self, *args):
-        pass
+        if len(args) == 0:
+            print("input error , maybe you need use 'man sin to know how to use it.")
+            return -1
+        if len(args) == 2 and args[1] <= 0:
+            print("the value of pre should have a value between 1 and 100 your input is illegal.")
+            return -1
 
     def derivative_0(self, k):
         if k % 4 == 0 or k % 4 == 2:
@@ -31,9 +35,3 @@ class Sine(Command, Check, Result):
         if k % 4 == 1:
             return 1
         return -1
-
-    def power_x(self, x, pow):
-        result = 1
-        for i in range(pow):
-            result = result * x
-        return result

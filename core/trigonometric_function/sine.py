@@ -12,11 +12,11 @@ class Sine(Command, Check, Result):
         else:
             precision = args[1]
         taylor = TaylorPolynomial()
-        sum = taylor.result(x, precision, self.derivative_0)
-        return sum
+        result = taylor.result(f0=0, x=x, precision=precision, derivative_0=self.derivative_0)
+        return result
 
     def man(self):
-        print("1. usage: sin(rad,pre) 'rad' is the unit of measurement for the angle in which you want to "
+        print("usage: sin(rad,pre) 'rad' is the unit of measurement for the angle in which you want to "
               "calculate the sine value in radians, 'pre' is precision ,'pre' should have a value between 1 and 100,"
               "default value 10")
         print("example : sin(1,10)")
@@ -30,6 +30,7 @@ class Sine(Command, Check, Result):
             return -1
 
     def derivative_0(self, k):
+        pass
         if k % 4 == 0 or k % 4 == 2:
             return 0
         if k % 4 == 1:

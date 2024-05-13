@@ -3,9 +3,9 @@ from fundamental_tools.function import fac
 
 class TaylorPolynomial(object):
 
-    def result(self, x, precision, derivative_0):
-        result = 0
-        for i in range(precision):
+    def result(self, f0, x, precision, derivative_0):
+        result = f0
+        for i in range(1, precision + 1):
             result += (self.integer_power(x, i) * derivative_0(i)) / fac(i)
         return result
 

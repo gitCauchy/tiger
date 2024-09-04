@@ -3,7 +3,7 @@ from command.command import Command
 from core.result import Result
 
 
-class Tangent(Command, Result, Check):
+class Secant(Command, Result, Check):
     def man(self):
         pass
 

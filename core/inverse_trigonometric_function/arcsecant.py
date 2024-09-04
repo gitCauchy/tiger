@@ -3,12 +3,12 @@ from command.command import Command
 from core.result import Result
 
 
-class Tangent(Command, Result, Check):
+class ArcSecant(Command, Check, Result):
     def man(self):
         pass
 
-    def result(self, *args):
+    def check(self, *args):
         pass
 
-    def check(self, *args):
+    def result(self, *args):
         pass

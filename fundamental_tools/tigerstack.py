@@ -1,7 +1,7 @@
 """ stack """
 
 
-class Stack(object):
+class TigerStack(object):
     def __init__(self):
         """Create a stack & init"""
         self.stack = []
@@ -21,3 +21,13 @@ class Stack(object):
 
     def size(self):
         return len(self.stack)
+
+    def get_top(self):
+        if self.is_empty():
+            return None
+        return self.stack[-1]
+
+    def get_bottom(self):
+        if self.is_empty():
+            return None
+        return self.stack[0]

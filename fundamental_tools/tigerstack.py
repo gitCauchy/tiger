@@ -9,7 +9,7 @@ class TigerStack(object):
     def pop(self):
         """ item pop from top"""
         if self.stack:
-            return self.stack.pop(0)
+            return self.stack.pop(-1)
         else:
             raise IndexError("stack is null")
 

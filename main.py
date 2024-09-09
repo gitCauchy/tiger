@@ -1,9 +1,12 @@
 from command.help import do_help
+from fundamental_tools.function_tools import calculate
+
 import sys
 
 
 def solve(exp):
     print("YOUR INPUT IS : ", exp)
+    print(calculate(exp))
 
 
 def terminated():

@@ -1,5 +1,26 @@
+from core.trigonometric_function.cosine import Cosine
+from core.trigonometric_function.sine import Sine
 from fundamental_tools.tigerstack import TigerStack
 from decimal import Decimal
+
+
+def is_function(exp):
+    function_list = ["sin", "cos"]
+    for fun in function_list:
+        if exp.startswith(fun):
+            return True
+
+
+def solve_function(exp):
+    if exp.startswith("sin"):
+        sin = Sine()
+        arg = exp[3:]
+        return sin.result(Decimal(arg))
+
+    if exp.startswith("cos"):
+        cos = Cosine()
+        arg = exp[3:]
+        return cos.result(Decimal(arg))
 
 
 def plus(d1, d2):
@@ -63,6 +84,9 @@ def rpn_reverse(exp):
                     suffix_exp += char_stack.pop()
                 char_stack.push(c)
             suffix_exp += " "
+        # defined function e.g. sin cos tan
+        else:
+            suffix_exp += c
 
     while not char_stack.is_empty():
         suffix_exp += " "
@@ -75,9 +99,11 @@ def rpn_calculate(rpn_exp):
     num_stack = TigerStack()
     ele_list = rpn_exp.split()
     for e in ele_list:
-        if e.isdigit():
-            num_stack.push(Decimal(e))
-            continue
+        if not is_operator(e):
+            if is_function(e):
+                num_stack.push(Decimal(solve_function(e)))
+            else:
+                num_stack.push(Decimal(e))
         else:
             digit_1 = num_stack.pop()
             digit_2 = num_stack.pop()
@@ -89,6 +115,7 @@ def rpn_calculate(rpn_exp):
                 num_stack.push(multiply(digit_1, digit_2))
             else:
                 num_stack.push(divide(digit_2, digit_1))
+
     return num_stack.pop()
 
 
@@ -99,3 +126,8 @@ class FunctionTools:
         if exp in self.function_list:
             return True
         return False
+
+
+def calculate(ipt):
+    suffix_exp = rpn_reverse(ipt)
+    return rpn_calculate(suffix_exp)

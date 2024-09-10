@@ -2,10 +2,11 @@ from core.trigonometric_function.cosine import Cosine
 from core.trigonometric_function.sine import Sine
 from fundamental_tools.tigerstack import TigerStack
 from decimal import Decimal
+from conf.config_read import read_config_info
 
 
 def is_function(exp):
-    function_list = ["sin", "cos"]
+    function_list = list(read_config_info("function", "function_list"))
     for fun in function_list:
         if exp.startswith(fun):
             return True
@@ -14,8 +15,11 @@ def is_function(exp):
 def solve_function(exp):
     if exp.startswith("sin"):
         sin = Sine()
-        arg = exp[3:]
-        return sin.result(Decimal(arg))
+        args_str = exp[3:]
+        arg_1 = args_str.split(",")[0]
+        arg_2 = args_str.split(",")[1]
+        result = sin.result(Decimal(arg_1), int(arg_2))
+        return sin.result(Decimal(arg_1), int(arg_2))
 
     if exp.startswith("cos"):
         cos = Cosine()
@@ -117,15 +121,6 @@ def rpn_calculate(rpn_exp):
                 num_stack.push(divide(digit_2, digit_1))
 
     return num_stack.pop()
-
-
-class FunctionTools:
-    function_list = ["sin", "cos"]
-
-    def is_function(self, exp):
-        if exp in self.function_list:
-            return True
-        return False
 
 
 def calculate(ipt):

@@ -1,10 +1,11 @@
 from check.check import Check
-from command.command import Command
+from command.manual import Manual
 from core.result import Result
 from fundamental_tools.taylor_polynomial import TaylorPolynomial
 
 
-class Cosine(Command, Check, Result):
+class Cosine(Manual, Check, Result):
+
     def result(self, *args):
         x = args[0]
         if len(args) == 2:

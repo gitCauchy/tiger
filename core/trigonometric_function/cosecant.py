@@ -1,9 +1,9 @@
 from check.check import Check
-from command.command import Command
+from command.manual import Manual
 from core.result import Result
 
 
-class Cosecant(Command,Check,Result):
+class Cosecant(Manual, Check, Result):
     def man(self):
         pass
 

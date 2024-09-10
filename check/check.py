@@ -1,7 +1,3 @@
-from abc import abstractmethod, ABCMeta
-
-
-class Check(metaclass=ABCMeta):
-    @abstractmethod
+class Check(object):
     def check(self, *args):
         pass

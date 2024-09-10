@@ -1,0 +1,14 @@
+{
+  "sin": {
+    "name": "sine",
+    "module_name": "trigonometric_function",
+    "file_name": "sine",
+    "class_name": "Sine"
+  },
+  "cos": {
+    "name": "cosine",
+    "module_name": "trigonometric_function",
+    "file_name": "cosine",
+    "class_name": "Cosine"
+  }
+}

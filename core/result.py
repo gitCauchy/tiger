@@ -1,7 +1,3 @@
-from abc import abstractmethod, ABCMeta
-
-
-class Result(metaclass=ABCMeta):
-    @abstractmethod
+class Result(object):
     def result(self, *args):
         pass

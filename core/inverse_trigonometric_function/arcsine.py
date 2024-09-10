@@ -1,9 +1,9 @@
 from check.check import Check
-from command.command import Command
+from command.manual import Manual
 from core.result import Result
 
 
-class ArcSine(Command,Result,Check):
+class ArcSine(Manual, Result, Check):
     def man(self):
         pass
 

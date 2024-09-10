@@ -1,10 +1,11 @@
 from check.check import Check
-from command.command import Command
+from command.manual import Manual
 from core.result import Result
 from fundamental_tools.taylor_polynomial import TaylorPolynomial
 
 
-class Sine(Command, Check, Result):
+class Sine(Manual, Check, Result):
+
     def result(self, *args):
         x = args[0]
         if len(args) == 1:
@@ -30,7 +31,6 @@ class Sine(Command, Check, Result):
             return -1
 
     def derivative_0(self, k):
-        pass
         if k % 4 == 0 or k % 4 == 2:
             return 0
         if k % 4 == 1:

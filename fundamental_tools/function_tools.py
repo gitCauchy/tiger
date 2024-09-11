@@ -16,15 +16,22 @@ def solve_function(exp):
     if exp.startswith("sin"):
         sin = Sine()
         args_str = exp[3:]
-        arg_1 = args_str.split(",")[0]
-        arg_2 = args_str.split(",")[1]
-        result = sin.result(Decimal(arg_1), int(arg_2))
-        return sin.result(Decimal(arg_1), int(arg_2))
+        if "," in args_str:
+            arg_1 = args_str.split(",")[0]
+            arg_2 = args_str.split(",")[1]
+            return sin.result(Decimal(arg_1), int(arg_2))
+        else:
+            return sin.result(Decimal(args_str))
 
     if exp.startswith("cos"):
         cos = Cosine()
-        arg = exp[3:]
-        return cos.result(Decimal(arg))
+        args_str = exp[3:]
+        if "," in args_str:
+            arg_1 = args_str.split(",")[0]
+            arg_2 = args_str.split(",")[1]
+            return cos.result(Decimal(arg_1), int(arg_2))
+        else:
+            return cos.result(Decimal(args_str))
 
 
 def plus(d1, d2):

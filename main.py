@@ -8,6 +8,9 @@ import sys
 
 def solve(exp):
     print("YOUR INPUT IS : ", exp)
+    exp = exp.strip()
+    if exp == "":
+        return
     if exp.startswith("man"):
         # check man func exists
         if not exp[3:].strip() in read_config_info(section="man", key="man_func_list"):

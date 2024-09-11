@@ -1,4 +1,4 @@
-from fundamental_tools.function import fac
+from core.elementary_function import fac
 
 
 class TaylorPolynomial(object):

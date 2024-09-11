@@ -1,5 +1,5 @@
-from check.check import Check
-from command.manual import Manual
+from core.check import Check
+from core.manual import Manual
 from core.result import Result
 
 

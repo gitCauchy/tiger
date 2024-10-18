@@ -2,7 +2,7 @@ from command.help import do_help
 from fundamental_tools.function_tools import calculate
 from conf.config_read import read_config_info
 from command.man import man
-from core.trigonometric_function import *
+from core import *
 import sys
 
 

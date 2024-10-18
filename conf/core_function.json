@@ -10,5 +10,11 @@
     "module_name": "trigonometric_function",
     "file_name": "cosine",
     "class_name": "Cosine"
+  },
+  "tan": {
+    "name": "tangent",
+    "module_name": "trigonometric_function",
+    "file_name": "tangent",
+    "class_name": "Tangent"
   }
 }

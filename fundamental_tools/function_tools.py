@@ -1,8 +1,8 @@
-from core.trigonometric_function.cosine import Cosine
-from core.trigonometric_function.sine import Sine
-from fundamental_tools.tigerstack import TigerStack
 from decimal import Decimal
+
 from conf.config_read import read_config_info
+from fundamental_tools.function_solve import solve_function
+from fundamental_tools.tigerstack import TigerStack
 
 
 def is_function(exp):
@@ -10,28 +10,6 @@ def is_function(exp):
     for fun in function_list:
         if exp.startswith(fun):
             return True
-
-
-def solve_function(exp):
-    if exp.startswith("sin"):
-        sin = Sine()
-        args_str = exp[3:]
-        if "," in args_str:
-            arg_1 = args_str.split(",")[0]
-            arg_2 = args_str.split(",")[1]
-            return sin.result(Decimal(arg_1), int(arg_2))
-        else:
-            return sin.result(Decimal(args_str))
-
-    if exp.startswith("cos"):
-        cos = Cosine()
-        args_str = exp[3:]
-        if "," in args_str:
-            arg_1 = args_str.split(",")[0]
-            arg_2 = args_str.split(",")[1]
-            return cos.result(Decimal(arg_1), int(arg_2))
-        else:
-            return cos.result(Decimal(args_str))
 
 
 def plus(d1, d2):
